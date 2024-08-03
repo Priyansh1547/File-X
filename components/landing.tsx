@@ -19,8 +19,9 @@ export default function Landing() {
   const user = useUser();
 
   useEffect(() => {
-    user ? setIsLoggedIn(true) : setIsLoggedIn(false);
+    user.isSignedIn ? setIsLoggedIn(true) : setIsLoggedIn(false);
   }, [user]);
+
   return (
     <div className="flex flex-col bg-black dark text-white">
       <header className="px-4 h-14 flex items-center justify-between border-b">

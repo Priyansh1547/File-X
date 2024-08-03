@@ -89,7 +89,7 @@ export default function Tables() {
                     console.log(doc.downloadURL);
                   }}
                 >
-                  Download
+                  Open
                 </Button>
               </TableCell>
               <TableCell>
