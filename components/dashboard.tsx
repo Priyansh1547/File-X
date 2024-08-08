@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import UploadButton from "./uploadButton";
 import { UserButton } from "@clerk/nextjs";
 import Tables from "./table";
+import { DarkMode } from "./darkMode";
 
 export default function Dasboard() {
   return (
-    <div className="flex min-h-screen flex-col dark text-white bg-black">
+    <div className="flex min-h-screen flex-col dark:text-white dark:bg-black">
       <header className="px-4 h-14 flex items-center justify-between border-b">
         <div className="flex gap-4">
           <Link href="/">
@@ -15,10 +15,11 @@ export default function Dasboard() {
           <label>Filex</label>
         </div>
         <nav className="flex gap-4 mt-2 w-full justify-end">
+          <DarkMode />
           <UserButton />
         </nav>
       </header>
-      <main className="flex-1 bg-black dark text-white items-center justify-center">
+      <main className="flex-1 dark:bg-black  dark:text-white items-center justify-center">
         <div className="container py-8 px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold">My Files</h1>

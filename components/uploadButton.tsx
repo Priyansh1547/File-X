@@ -113,7 +113,7 @@ export default function UploadButton() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="dark text-white" variant="outline">
+        <Button variant="outline">
           <UploadIcon className="mr-2 h-4 w-4" /> Upload
         </Button>
       </DialogTrigger>

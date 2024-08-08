@@ -12,34 +12,41 @@ import { Button } from "@/components/ui/button";
 import Beam from "@/components/beam";
 import MarqueeDemo from "@/components/tweet";
 import Link from "next/link";
-import { UserButton, useUser } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 import { useState, useEffect } from "react";
+import { DarkMode } from "./darkMode";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+
 export default function Landing() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const user = useUser();
-
   useEffect(() => {
     user.isSignedIn ? setIsLoggedIn(true) : setIsLoggedIn(false);
   }, [user]);
 
   return (
-    <div className="flex flex-col bg-black dark text-white">
+    <div className="flex flex-col dark:bg-black dark:text-white">
       <header className="px-4 h-14 flex items-center justify-between border-b">
         <CloudIcon className="h-6 w-6" />
         <span className="sr-only">Filex</span>
         <nav className="flex gap-4 mt-2 w-full justify-end">
+          <DarkMode />
           {isLoggedIn ? (
-            <Button className="w-18" variant="outline">
-              <Link href="/dashboard">Dashboard</Link>
-            </Button>
+            <Link href="/dashboard">
+              <Button className="w-18" variant="outline">
+                Dashboard
+              </Button>
+            </Link>
           ) : (
             <>
-              <Button className="w-18">
-                <Link href="/sign-up">Sign Up</Link>
-              </Button>
-              <Button variant="outline" className="w-18">
-                <Link href="/sign-in">Login</Link>
-              </Button>
+              <Link href="/sign-up">
+                <Button className="w-18">Sign Up</Button>
+              </Link>
+              <Link href="/sign-in">
+                <Button variant="outline" className="w-18">
+                  Login
+                </Button>
+              </Link>
             </>
           )}
         </nav>
@@ -61,17 +68,21 @@ export default function Landing() {
                 </div>
                 <div className="flex flex-col sm:flex-row gap-2">
                   {isLoggedIn ? (
-                    <Button className="w-18" variant="outline">
-                      <Link href="/dashboard">Dashboard</Link>
-                    </Button>
+                    <Link href="/dashboard">
+                      <Button className="w-18" variant="outline">
+                        Dashboard
+                      </Button>
+                    </Link>
                   ) : (
                     <>
-                      <Button className="w-18">
-                        <Link href="/sign-up">Sign in</Link>
-                      </Button>
-                      <Button variant="outline" className="w-18">
-                        <Link href="/sign-in">Try Filex</Link>
-                      </Button>
+                      <Link href="/sign-up">
+                        <Button className="w-18">Sign Up</Button>
+                      </Link>
+                      <Link href="/sign-in">
+                        <Button variant="outline" className="w-18">
+                          Login
+                        </Button>
+                      </Link>
                     </>
                   )}
                 </div>
@@ -132,7 +143,9 @@ export default function Landing() {
                   </ul>
                 </CardContent>
                 <CardFooter>
-                  <Button className="w-full">Sign Up</Button>
+                  <Link href="/sign-up" className="w-full">
+                    <Button className="w-full">Sign Up</Button>
+                  </Link>
                 </CardFooter>
               </Card>
 
@@ -169,7 +182,12 @@ export default function Landing() {
                   </ul>
                 </CardContent>
                 <CardFooter>
-                  <Button className="w-full">Contact Sales</Button>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="w-full">Upload</Button>
+                    </DialogTrigger>
+                    <DialogContent>Email: patelpiyu468@gmail.com</DialogContent>
+                  </Dialog>
                 </CardFooter>
               </Card>
             </div>
