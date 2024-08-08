@@ -184,7 +184,7 @@ export default function Landing() {
                 <CardFooter>
                   <Dialog>
                     <DialogTrigger asChild>
-                      <Button className="w-full">Upload</Button>
+                      <Button className="w-full">Contact</Button>
                     </DialogTrigger>
                     <DialogContent>Email: patelpiyu468@gmail.com</DialogContent>
                   </Dialog>
